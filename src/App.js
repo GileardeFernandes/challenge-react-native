@@ -48,13 +48,19 @@ export default function App() {
             <View style={styles.repositoryContainer}>
               <Text style={styles.repository}>{item.title}</Text>
 
-              <View style={styles.techsContainer}>
-                {/* {repository.techs.map(item => (
-                    <Text  key={item} style={styles.tech}>
-                        {item}
+
+              <FlatList
+                data={item.techs}
+                keyExtractor={tech => tech}
+                flexDirection="row"
+                renderItem={({ item: tech }) => (
+                  <View style={styles.techsContainer}>
+                    <Text style={styles.tech}>
+                      {tech}
                     </Text>
-                 ))} */}
-              </View>
+                  </View>
+                )}
+              />
 
               <View style={styles.likesContainer}>
                 <Text
@@ -98,7 +104,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   techsContainer: {
-    flexDirection: "row",
+    //flexDirection: "row",
     marginTop: 10,
   },
   tech: {
